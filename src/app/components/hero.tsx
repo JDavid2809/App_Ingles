@@ -27,12 +27,12 @@ export default function HeroSection() {
   }, []);
 
   const handleStart = () => {
-    router.push("/Login") // 👈 Redirección
+    router.push("/Login") 
   }
 
 
   return (
-    <section className="pt-16 pb-20 overflow-hidden relative">
+    <section className="pt-8 pb-20 overflow-hidden relative">
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-[#e30f28]/5 rounded-bl-full -z-10"></div>
       <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-[#00246a]/5 rounded-tr-full -z-10"></div>
