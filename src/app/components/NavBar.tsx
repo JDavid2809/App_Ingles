@@ -1,6 +1,6 @@
 "use client"
 
-import { Users, Star, DollarSign, LogIn, UserPlus, Menu, X, BookMarked, House } from "lucide-react"
+import { DollarSign, LogIn, UserPlus, Menu, X, BookMarked, House } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect } from "react"
@@ -15,8 +15,8 @@ export default function Navbar() {
     router.push("/Login")
   }
 
-  const handleRegister = () => {
-    router.push("/Register")
+  const handleHome = () => {
+    router.push("/Home")
   }
 
 
@@ -35,7 +35,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="bg-white rounded-bl-2xl rounded-br-2xl shadow-lg sticky top-0 z-50 backdrop-blur-sm">
+      <header className="bg-white shadow-lg sticky top-0 z-50 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex-1 md:flex-none flex justify-center md:justify-start">
@@ -51,7 +51,7 @@ export default function Navbar() {
             </div>
             <nav className="hidden md:flex space-x-8 flex-1 justify-center">
               <Link
-                href="#inicio"
+                href="/"
                 className="text-[#00246a] hover:text-[#e30f28] transition-all duration-300 font-medium relative group py-2 flex items-center space-x-2"
               >
                 <House className="h-5 w-5" />
@@ -59,7 +59,7 @@ export default function Navbar() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#e30f28] transition-all duration-300 group-hover:w-full"></span>
               </Link>
               <Link
-                href="#cursos"
+                href="/views/Courses"
                 className="text-[#00246a] hover:text-[#e30f28] transition-all duration-300 font-medium relative group py-2 flex items-center space-x-2"
               >
                 <BookMarked className="h-5 w-5" />
@@ -76,8 +76,6 @@ export default function Navbar() {
               </Link>
             </nav>
 
-
-            {/* Desktop Auth Buttons */}
             <div className="hidden md:flex items-center space-x-3">
               <button onClick={handleLogin} className="bg-white text-[#00246a] border border-[#00246a] hover:bg-gray-100 px-4 py-2 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow flex items-center space-x-2">
                 <LogIn className="h-4 w-4" />

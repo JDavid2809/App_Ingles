@@ -1,13 +1,12 @@
-import Hero from "../components/hero";
-import MethodSection from "../components/method";
-import NavBar from "../components/NavBar";
+import Hero from "@/app/components/views/hero";
+import FeaturesSection from "@/app/components/views/Features";
+import MethodSection from "@/app/components/views/method";
 
-
-export default function Home() {
+export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white">
-      <NavBar/>
         <Hero/>
+        <FeaturesSection/>
         <MethodSection/>
     </div>
   );
