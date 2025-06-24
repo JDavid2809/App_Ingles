@@ -7,19 +7,13 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 
 export default function Navbar() {
-  const [isMobile, setIsMobile] = useState(false)
+  const [, setIsMobile] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const router  = useRouter()
 
   const handleLogin = () => {
     router.push("/Login")
   }
-
-  const handleHome = () => {
-    router.push("/Home")
-  }
-
-
 
   useEffect(() => {
     const checkIfMobile = () => {

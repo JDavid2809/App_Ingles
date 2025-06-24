@@ -22,5 +22,6 @@
     "dir":"auto",
     "lang":"es-ES",
     "name":"Triunfando con el Inglés",
-    "short_name":"TCEL"
+    "short_name":"TCEL",
+    "description": "App progresiva educativa para aprender inglés"
 }
