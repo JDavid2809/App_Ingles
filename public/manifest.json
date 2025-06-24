@@ -1,6 +1,6 @@
 {
-    "theme_color":"#e30f28",
-    "background_color":"#2EC6FE",
+    "theme_color":"#FFFFFF",
+    "background_color":"#FFFFFF",
     "scope":"/",
     "start_url":"/",
     "icons":[
@@ -22,6 +22,6 @@
     "dir":"auto",
     "lang":"es-ES",
     "name":"Triunfando con el Inglés",
-    "short_name":"TCEL",
+    "short_name":"Triunfando con el Inglés",
     "description": "App progresiva educativa para aprender inglés"
 }
