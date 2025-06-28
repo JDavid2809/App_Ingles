@@ -2,7 +2,7 @@
 version: '3'
 
 services:
-  todosDB:
+  english-app:
     image: postgres:15.3
     container_name: english-database
     restart: always
