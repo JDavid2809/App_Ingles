@@ -29,7 +29,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="bg-white shadow-lg sticky top-0 z-50 backdrop-blur-sm">
+      <header className="bg-white shadow-none md:shadow-lg sticky top-0 z-50 backdrop-blur-sm ">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex-1 md:flex-none flex justify-center md:justify-start">
@@ -127,7 +127,6 @@ export default function Navbar() {
           </Link>
         </div>
       </div>
-      <div className="md:hidden h-16"></div>
     </>
   )
 }

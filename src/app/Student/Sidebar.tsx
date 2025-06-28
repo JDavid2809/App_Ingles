@@ -23,6 +23,7 @@ export function Sidebar({ isOpen, onClose, activeSection, onSectionChange }: Sid
         <>
             {isOpen && <div className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden" onClick={onClose} />}
             <div
+            
             className={`
                 h-full w-80 bg-white transform transition-transform duration-300 ease-in-out
                 shadow-2xl z-50 fixed top-0 left-0
