@@ -1,13 +1,14 @@
-import NavBar from "./components/NavBar";
-import Hero from "./components/hero";
-import MethodSection from "./components/method";
+import HeroSection from "@/components/hero";
+import Navbar from "@/components/NavBar";
+import MethodSection from '@/components/Method';
+
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      <NavBar/>
-        <Hero/>
-        <MethodSection/>
+      <Navbar/>
+        <HeroSection/>
+      <MethodSection/>
     </div>
   );
 }

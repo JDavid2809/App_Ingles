@@ -2,10 +2,34 @@
 
 import { useState } from "react"
 import { Eye, EyeOff, Mail, Lock, CheckCircle, Zap, Shield, Sparkles, Star } from "lucide-react"
+import { signIn } from "next-auth/react";
+import { redirect } from "next/navigation";
+
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
+   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
+  const [error, setError] = useState("");
 
+async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError("");
+
+    const res = await signIn("credentials", {
+      redirect: false,   // Muy importante para manejarlo tú y no redirigir automáticamente
+      email,
+      password,
+    });
+
+    if (res?.error) {
+      setError("Correo o contraseña incorrectos");
+    } else if (res?.ok) {
+      
+      redirect("/Home")
+    }
+  }
   return (
     <div className="relative">
       {/* Enhanced floating decorative elements */}
@@ -74,12 +98,18 @@ export default function LoginForm() {
             <Star className="w-4 h-4 animate-pulse" />
           </div>
         </div>
-
-        <div
+            
+         
+        <form 
+        onSubmit={handleSubmit}
           className={`relative space-y-6 md:space-y-8 lg:space-y-10 p-6 md:p-8 lg:p-12 bg-gradient-to-b from-white/90 to-gray-50/70`}
         >
           {/* Enhanced Email Field */}
           <div className="space-y-5 group">
+            { error && (
+            <p className="p-3 bg-red-500 text-white text-center uppercase text-sm">{error}</p>
+          )
+            }
             <label
               htmlFor="email"
               className="text-slate-800 font-black text-base md:text-lg mb-3 group-hover:text-indigo-700 transition-all duration-300 flex items-center gap-3"
@@ -94,6 +124,8 @@ export default function LoginForm() {
               <div className="relative">
                 <Mail className="absolute left-3 md:left-4 top-3 md:top-4 h-5 w-5 md:h-6 md:w-6 text-slate-400 group-hover:text-indigo-600 group-hover:scale-110 transition-all duration-300 z-10" />
                 <input
+                 value={email}
+        onChange={e => setEmail(e.target.value)}
                   id="email"
                   type="email"
                   placeholder="tu@email.com"
@@ -122,6 +154,8 @@ export default function LoginForm() {
                 <Lock className="absolute left-3 md:left-4 top-3 md:top-4 h-5 w-5 md:h-6 md:w-6 text-slate-400 group-hover:text-indigo-600 group-hover:scale-110 transition-all duration-300 z-10" />
                 <input
                   id="password"
+                  value={password}
+        onChange={e => setPassword(e.target.value)}
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
                   className="w-full pl-10 md:pl-12 pr-12 md:pr-14 h-12 md:h-14 border-3 border-gray-200 text-black focus:border-indigo-600 focus:ring-6 focus:ring-indigo-100 focus:outline-none text-sm md:text-base rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/95 backdrop-blur-sm font-semibold placeholder:text-gray-400 group-hover:bg-white group-hover:border-indigo-300"
@@ -163,7 +197,7 @@ export default function LoginForm() {
           </div>
 
           {/* Ultra Enhanced Login Button */}
-          <button className="w-full relative h-12 md:h-16 text-base md:text-xl font-black rounded-2xl shadow-2xl transform hover:scale-[1.03] hover:-translate-y-2 transition-all duration-500 flex items-center justify-center overflow-hidden group bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 hover:from-indigo-700 hover:via-purple-700 hover:to-blue-700 text-white">
+          <button type="submit" className="w-full relative h-12 md:h-16 text-base md:text-xl font-black rounded-2xl shadow-2xl transform hover:scale-[1.03] hover:-translate-y-2 transition-all duration-500 flex items-center justify-center overflow-hidden group bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 hover:from-indigo-700 hover:via-purple-700 hover:to-blue-700 text-white">
             {/* Multiple animated backgrounds */}
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-400 via-purple-500 to-blue-500 opacity-0 group-hover:opacity-40 transition-all duration-700"></div>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
@@ -223,7 +257,7 @@ export default function LoginForm() {
               <span className="text-gray-700 tracking-wide">Continuar con Google</span>
             </div>
           </button>
-        </div>
+        </form>
       </div>
     </div>
   )

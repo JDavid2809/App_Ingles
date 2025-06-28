@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import LoginForm from "../components/Login/login-form"
-import RegisterForm from "../components/Register/register-form"
+import LoginForm from "@/components/Login/login-form"
+import RegisterForm from "@/components/Register/register-form"
 import Image from "next/image"
 
 export default function AuthPage() {
