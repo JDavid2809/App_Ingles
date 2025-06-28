@@ -35,6 +35,19 @@ DATABASE_URL="postgresql://usuario:contraseña@localhost:5432/nombre_de_basededa
 
 > Recuerda que `usuario`, `contraseña` y `nombre_de_base` deben coincidir con lo que definiste en el `docker-compose.yml`.
 
+### ¿Cómo generar un NEXTAUTH_SECRET?
+
+Puedes generar uno seguro ejecutando en consola:
+```
+    openssl rand -base64 32
+```
+
+Esto generará una `clave aleatoria` como:
+```
+0U9hZ+N1MxLk/Vy9nVQ8q6Ow5FHpZUxAa2FyMnZGmkU=
+```
+Usa esa clave como valor de NEXTAUTH_SECRET en tu .env.
+
 ---
 
 ### 3. Instalar dependencias
