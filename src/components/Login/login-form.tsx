@@ -1,35 +1,50 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Eye, EyeOff, Mail, Lock, CheckCircle, Zap, Shield, Sparkles, Star } from "lucide-react"
+import { useState } from "react";
+import {
+  Eye,
+  EyeOff,
+  Mail,
+  Lock,
+  CheckCircle,
+  Zap,
+  Shield,
+  Sparkles,
+  Star,
+} from "lucide-react";
 import { signIn } from "next-auth/react";
-import { redirect } from "next/navigation";
-
+import { useRouter } from "next/navigation";
+import { LoginLoader } from "../ui/loaders/LoginLoader";
 
 export default function LoginForm() {
-  const [showPassword, setShowPassword] = useState(false)
-   const [email, setEmail] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
-  const [error, setError] = useState("");
 
-async function handleSubmit(e: React.FormEvent) {
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
+    setLoading(true);
 
     const res = await signIn("credentials", {
-      redirect: false,   // Muy importante para manejarlo tú y no redirigir automáticamente
+      redirect: false,
       email,
       password,
     });
+    setLoading(false);
 
     if (res?.error) {
       setError("Correo o contraseña incorrectos");
     } else if (res?.ok) {
-      
-      redirect("/Home")
+      console.log({ res });
+      router.push("/Student");
     }
   }
+
   return (
     <div className="relative">
       {/* Enhanced floating decorative elements */}
@@ -54,7 +69,10 @@ async function handleSubmit(e: React.FormEvent) {
             ></div>
             <div
               className="absolute bottom-4 right-4 w-20 h-20 border border-white/15 rounded-full animate-spin"
-              style={{ animationDuration: "18s", animationDirection: "reverse" }}
+              style={{
+                animationDuration: "18s",
+                animationDirection: "reverse",
+              }}
             ></div>
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 border border-white/10 rounded-lg rotate-45 animate-pulse"></div>
           </div>
@@ -92,24 +110,27 @@ async function handleSubmit(e: React.FormEvent) {
             <Shield className="w-5 h-5 animate-bounce" />
           </div>
           <div className="absolute top-1/2 right-4 opacity-20">
-            <Sparkles className="w-4 h-4 animate-spin" style={{ animationDuration: "4s" }} />
+            <Sparkles
+              className="w-4 h-4 animate-spin"
+              style={{ animationDuration: "4s" }}
+            />
           </div>
           <div className="absolute bottom-1/2 left-4 opacity-20">
             <Star className="w-4 h-4 animate-pulse" />
           </div>
         </div>
-            
-         
-        <form 
-        onSubmit={handleSubmit}
+
+        <form
+          onSubmit={handleSubmit}
           className={`relative space-y-6 md:space-y-8 lg:space-y-10 p-6 md:p-8 lg:p-12 bg-gradient-to-b from-white/90 to-gray-50/70`}
         >
           {/* Enhanced Email Field */}
           <div className="space-y-5 group">
-            { error && (
-            <p className="p-3 bg-red-500 text-white text-center uppercase text-sm">{error}</p>
-          )
-            }
+            {error && (
+              <p className="p-3 bg-red-500 text-white text-center uppercase text-sm">
+                {error}
+              </p>
+            )}
             <label
               htmlFor="email"
               className="text-slate-800 font-black text-base md:text-lg mb-3 group-hover:text-indigo-700 transition-all duration-300 flex items-center gap-3"
@@ -124,8 +145,8 @@ async function handleSubmit(e: React.FormEvent) {
               <div className="relative">
                 <Mail className="absolute left-3 md:left-4 top-3 md:top-4 h-5 w-5 md:h-6 md:w-6 text-slate-400 group-hover:text-indigo-600 group-hover:scale-110 transition-all duration-300 z-10" />
                 <input
-                 value={email}
-        onChange={e => setEmail(e.target.value)}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   id="email"
                   type="email"
                   placeholder="tu@email.com"
@@ -155,7 +176,7 @@ async function handleSubmit(e: React.FormEvent) {
                 <input
                   id="password"
                   value={password}
-        onChange={e => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
                   className="w-full pl-10 md:pl-12 pr-12 md:pr-14 h-12 md:h-14 border-3 border-gray-200 text-black focus:border-indigo-600 focus:ring-6 focus:ring-indigo-100 focus:outline-none text-sm md:text-base rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/95 backdrop-blur-sm font-semibold placeholder:text-gray-400 group-hover:bg-white group-hover:border-indigo-300"
@@ -166,7 +187,11 @@ async function handleSubmit(e: React.FormEvent) {
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-4 top-4 text-slate-400 hover:text-indigo-600 transition-all duration-300 hover:scale-125 z-10 p-1 rounded-xl hover:bg-indigo-50"
                 >
-                  {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                  {showPassword ? (
+                    <EyeOff className="h-5 w-5" />
+                  ) : (
+                    <Eye className="h-5 w-5" />
+                  )}
                 </button>
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none"></div>
               </div>
@@ -197,7 +222,13 @@ async function handleSubmit(e: React.FormEvent) {
           </div>
 
           {/* Ultra Enhanced Login Button */}
-          <button type="submit" className="w-full relative h-12 md:h-16 text-base md:text-xl font-black rounded-2xl shadow-2xl transform hover:scale-[1.03] hover:-translate-y-2 transition-all duration-500 flex items-center justify-center overflow-hidden group bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 hover:from-indigo-700 hover:via-purple-700 hover:to-blue-700 text-white">
+          <button
+            type="submit"
+            disabled={loading}
+           
+            className= {` w-full relative h-12 md:h-16 text-base md:text-xl font-black rounded-2xl shadow-2xl transform hover:scale-[1.03] hover:-translate-y-2 transition-all duration-500 flex items-center justify-center overflow-hidden group bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 hover:from-indigo-700 hover:via-purple-700 hover:to-blue-700 text-white 
+              ${loading && "opacity-60 cursor-not-allowed "} `}
+          >
             {/* Multiple animated backgrounds */}
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-400 via-purple-500 to-blue-500 opacity-0 group-hover:opacity-40 transition-all duration-700"></div>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
@@ -208,7 +239,9 @@ async function handleSubmit(e: React.FormEvent) {
               <div className="p-2 bg-white/25 rounded-xl mr-3 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg">
                 <CheckCircle className="w-5 h-5 md:w-6 md:h-6" />
               </div>
-              <span className="text-base md:text-xl tracking-wide">Iniciar Sesión</span>
+              <span className="text-base md:text-xl tracking-wide">
+                Iniciar Sesión
+              </span>
             </div>
 
             {/* Enhanced glow effects */}
@@ -254,11 +287,17 @@ async function handleSubmit(e: React.FormEvent) {
                   />
                 </svg>
               </div>
-              <span className="text-gray-700 tracking-wide">Continuar con Google</span>
+              <span className="text-gray-700 tracking-wide">
+                Continuar con Google
+              </span>
             </div>
           </button>
         </form>
       </div>
+      {loading && (
+     <LoginLoader/>
+)}
+
     </div>
-  )
+  );
 }

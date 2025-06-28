@@ -67,6 +67,7 @@ export async function registerUser(formData: FormData) {
     
 
     return { success: true, message: "Registro exitoso." }
+    
 
   } catch (error ) {
     console.error("Error al registrar:", error);
