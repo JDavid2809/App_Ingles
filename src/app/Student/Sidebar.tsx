@@ -70,13 +70,12 @@ export function Sidebar({ isOpen, onClose, activeSection, onSectionChange, user 
                 {/* Navigation */}
                 <nav className="flex-1 p-4">
                     <div className="space-y-2">
+
                         {navigationItems.map((item) => {
                             const Icon = item.icon
                             const isActive = activeSection === item.id
-
                             return (
-                                <>
-                                      <button
+                                <button
                                     key={item.id}
                                     onClick={() => {
                                         onSectionChange(item.id)
@@ -100,16 +99,8 @@ export function Sidebar({ isOpen, onClose, activeSection, onSectionChange, user 
                                     </div>
                                     <span className="font-medium flex-1 text-left">{item.label}</span>
                                     {isActive && <ChevronRight className="h-4 w-4 text-white" />}
-
-                                    
                                 </button>
-                                
-                                </>
-                              
-                                
                             )
-                            
-                            
                         })}
                         
                         

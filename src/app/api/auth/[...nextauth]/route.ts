@@ -12,16 +12,31 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Contraseña", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials.password) return null;
+        console.log('🔐 Attempting login with:', credentials?.email);
+        
+        if (!credentials?.email || !credentials.password) {
+          console.log('❌ Missing credentials');
+          return null;
+        }
 
         const user = await prisma.usuario.findUnique({
           where: { email: credentials.email },
         });
 
-        if (!user) return null;
+        if (!user) {
+          console.log('❌ User not found:', credentials.email);
+          return null;
+        }
+
+        console.log('👤 User found:', user.email, 'Role:', user.rol);
 
         const isValid = await bcrypt.compare(credentials.password, user.password);
-        if (!isValid) return null;
+        if (!isValid) {
+          console.log('❌ Invalid password');
+          return null;
+        }
+
+        console.log('✅ Login successful for:', user.email);
 
         // Devuelve objeto user para guardar en sesión
         return {
