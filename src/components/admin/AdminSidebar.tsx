@@ -70,14 +70,14 @@ export default function AdminSidebar() {
       {isOpen && <div className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden" onClick={() => setIsOpen(false)} />}
       <div
         className={`
-          h-full w-80 bg-white transform transition-transform duration-300 ease-in-out
-          shadow-2xl z-50 fixed top-0 left-0
+          h-screen w-80 bg-white transform transition-transform duration-300 ease-in-out
+          shadow-2xl z-[60] fixed top-0 left-0 bottom-0 flex flex-col
           lg:relative lg:z-0 lg:translate-x-0 lg:shadow-none lg:border-r lg:border-gray-200
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
         `}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-100">
+        <div className="flex items-center justify-between p-6 border-b border-gray-100 flex-shrink-0">
           <div className="flex items-center space-x-3">
             <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg">
               <GraduationCap className="h-7 w-7 text-white" />
@@ -92,7 +92,7 @@ export default function AdminSidebar() {
         </div>
 
         {/* User Profile Section (dummy admin) */}
-        <div className="p-6 border-b border-gray-100">
+        <div className="p-6 border-b border-gray-100 flex-shrink-0">
           <div className="flex items-center space-x-4">
             <div className="w-14 h-14 bg-blue-900 rounded-full flex items-center justify-center text-white font-bold text-lg">
               A
@@ -111,7 +111,7 @@ export default function AdminSidebar() {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 p-4">
+        <nav className="flex-1 p-4 overflow-y-auto">
           <div className="space-y-2">
             {sidebarItems.map((item) => {
               const Icon = item.icon
@@ -148,7 +148,7 @@ export default function AdminSidebar() {
         </nav>
 
         {/* Footer */}
-        <div className="p-6 border-t border-gray-100">
+        <div className="p-6 border-t border-gray-100 flex-shrink-0">
           <Separator className="mb-3" />
           <div className="space-y-2">
             <button

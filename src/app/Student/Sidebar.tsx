@@ -1,6 +1,7 @@
 "use client"
 import { User as usuario } from "@/Interfaces/User.Interfaces"
-import { BookOpen, Calendar, GraduationCap, Home, Settings, User, FileText, Award, ChevronRight, X, } from "lucide-react"
+import { BookOpen, Calendar, GraduationCap, Home, Settings, User, FileText, Award, ChevronRight, X, LogOut } from "lucide-react"
+import { signOut } from "next-auth/react"
 
 interface SidebarProps {
     isOpen: boolean
@@ -21,6 +22,10 @@ const navigationItems = [
 ]
 
 export function Sidebar({ isOpen, onClose, activeSection, onSectionChange, user }: SidebarProps) {
+    const handleSignOut = () => {
+        signOut({ callbackUrl: "/Login" })
+    }
+
     return (
         <>
             {isOpen && <div className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden" onClick={onClose} />}
@@ -103,6 +108,33 @@ export function Sidebar({ isOpen, onClose, activeSection, onSectionChange, user 
                         })}
                     </div>
                 </nav>
+
+                {/* Footer */}
+                <div className="p-6 border-t border-gray-100 flex-shrink-0">
+                    <div className="space-y-2">
+                        <button
+                            onClick={() => { 
+                                window.location.href = "/"; 
+                                onClose(); 
+                            }}
+                            className="w-full flex items-center space-x-4 px-4 py-3 rounded-xl hover:bg-gray-50 text-gray-700 hover:text-gray-900 transition-all duration-200"
+                        >
+                            <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-gray-100">
+                                <Home className="h-5 w-5 text-gray-600" />
+                            </div>
+                            <span className="font-medium flex-1 text-left">Inicio</span>
+                        </button>
+                        <button
+                            onClick={handleSignOut}
+                            className="w-full flex items-center space-x-4 px-4 py-3 rounded-xl hover:bg-red-50 text-red-600 hover:text-red-700 transition-all duration-200"
+                        >
+                            <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-red-100">
+                                <LogOut className="h-5 w-5 text-red-600" />
+                            </div>
+                            <span className="font-medium flex-1 text-left">Cerrar Sesión</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </>
     )
