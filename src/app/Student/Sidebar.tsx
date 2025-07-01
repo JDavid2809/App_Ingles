@@ -69,19 +69,18 @@ export function Sidebar({ isOpen, onClose, activeSection, onSectionChange, user 
                 {/* Navigation */}
                 <nav className="flex-1 p-4 overflow-y-auto">
                     <div className="space-y-2">
+
                         {navigationItems.map((item) => {
                             const Icon = item.icon
                             const isActive = activeSection === item.id
-
                             return (
-                                <>
-                                    <button
-                                        key={item.id}
-                                        onClick={() => {
-                                            onSectionChange(item.id)
-                                            onClose()
-                                        }}
-                                        className={`
+                                <button
+                                    key={item.id}
+                                    onClick={() => {
+                                        onSectionChange(item.id)
+                                        onClose()
+                                    }}
+                                    className={`
                                     w-full flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-200 group
                                     ${isActive
                                                 ? "bg-[#e30f28] text-white shadow-lg transform scale-105"
@@ -100,7 +99,6 @@ export function Sidebar({ isOpen, onClose, activeSection, onSectionChange, user 
                                         <span className="font-medium flex-1 text-left">{item.label}</span>
                                         {isActive && <ChevronRight className="h-4 w-4 text-white" />}
                                     </button>
-                                </>
                             )
                         })}
                     </div>
