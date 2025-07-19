@@ -140,11 +140,11 @@ export default function CoursesManagement() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 bg-white p-6 rounded-2xl shadow-lg border-2 border-purple-100">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight">Gestión de Cursos</h2>
-          <p className="text-muted-foreground">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-700 flex items-center gap-2">Gestión de Cursos <span className='inline-flex items-center justify-center w-7 h-7 rounded bg-purple-600 text-white'><BookOpen className='h-4 w-4'/></span></h2>
+          <p className="text-gray-500">
             Administra los cursos disponibles y su contenido académico
           </p>
         </div>

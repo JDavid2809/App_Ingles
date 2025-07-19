@@ -20,9 +20,8 @@ export const AdminWrapper = ({ children }: AdminWrapperProps) => {
       footer.style.display = 'none';
     }
     
-    // Evitar scroll en el body para páginas de dashboard
-    body.style.overflow = 'hidden';
-    body.style.height = '100vh';
+    // body.style.overflow = 'hidden';
+    // body.style.height = '100vh';
 
     // Limpiar cuando se desmonta el componente
     return () => {
@@ -38,7 +37,7 @@ export const AdminWrapper = ({ children }: AdminWrapperProps) => {
   }, []);
 
   return (
-    <div className="fixed inset-0 bg-gray-100 overflow-hidden">
+    <div className="min-h-screen bg-gray-100 overflow-hidden">
       {children}
     </div>
   );

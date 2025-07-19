@@ -33,21 +33,21 @@ export default function RegisterForm() {
   return (
     <div className="relative">
       {/* Enhanced floating decorative elements */}
-      <div className="absolute -top-8 -right-8 w-16 h-16 bg-gradient-to-br from-rose-400 via-pink-500 to-red-600 rounded-full opacity-20 animate-pulse shadow-2xl"></div>
-      <div className="absolute -top-4 -left-10 w-10 h-10 bg-gradient-to-br from-orange-400 via-pink-500 to-rose-600 rounded-full opacity-30 animate-bounce shadow-xl"></div>
-      <div className="absolute -bottom-6 -right-6 w-8 h-8 bg-gradient-to-br from-pink-400 via-rose-500 to-red-500 rounded-full opacity-25 animate-ping shadow-lg"></div>
-      <div className="absolute -bottom-4 -left-8 w-6 h-6 bg-gradient-to-br from-rose-400 to-pink-500 rounded-full opacity-30 animate-pulse"></div>
+      <div className="absolute -top-8 -right-8 w-16 h-16 bg-gradient-to-br from-[#e30f28]/40 via-[#e30f28]/50 to-[#00246a]/60 rounded-full opacity-20 animate-pulse shadow-2xl"></div>
+      <div className="absolute -top-4 -left-10 w-10 h-10 bg-gradient-to-br from-[#00246a]/40 via-[#e30f28]/50 to-[#00246a]/60 rounded-full opacity-30 animate-bounce shadow-xl"></div>
+      <div className="absolute -bottom-6 -right-6 w-8 h-8 bg-gradient-to-br from-[#e30f28]/40 via-[#00246a]/50 to-[#e30f28]/50 rounded-full opacity-25 animate-ping shadow-lg"></div>
+      <div className="absolute -bottom-4 -left-8 w-6 h-6 bg-gradient-to-br from-[#00246a]/40 to-[#e30f28]/50 rounded-full opacity-30 animate-pulse"></div>
 
       <form
         // action={registerUser} 
         onSubmit={handleSubmit}
-        className="relative border-0 shadow-2xl bg-gradient-to-br from-white/95 via-white/90 to-rose-50/80 backdrop-blur-2xl rounded-3xl overflow-hidden transform hover:scale-[1.02] transition-all duration-700 hover:shadow-rose-200/50">
+        className="relative border-0 shadow-2xl bg-gradient-to-br from-white/95 via-white/90 to-[#00246a]/5 backdrop-blur-2xl rounded-3xl overflow-hidden transform hover:scale-[1.02] transition-all duration-700 hover:shadow-[#00246a]/20">
         {/* Enhanced animated border effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-rose-500 via-pink-500 to-rose-500 rounded-3xl opacity-30 animate-pulse"></div>
-        <div className="absolute inset-[3px] bg-gradient-to-br from-white/95 via-white/90 to-rose-50/80 rounded-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#00246a] via-[#e30f28] to-[#00246a] rounded-3xl opacity-30 animate-pulse"></div>
+        <div className="absolute inset-[3px] bg-gradient-to-br from-white/95 via-white/90 to-[#00246a]/5 rounded-3xl"></div>
 
         {/* Enhanced Header */}
-        <div className="relative bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700 text-white p-10 overflow-hidden">
+        <div className="relative bg-gradient-to-br from-[#00246a] via-[#00246a] to-[#e30f28] text-white p-10 overflow-hidden">
           {/* Complex animated background pattern */}
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
@@ -71,7 +71,7 @@ export default function RegisterForm() {
                 ¡Únete a nosotros!
               </h2>
             </div>
-            <p className="text-rose-100 text-center text-lg font-semibold">
+            <p className="text-white/90 text-center text-lg font-semibold">
               Comienza tu transformación con el inglés hoy mismo
             </p>
             <div className="flex justify-center space-x-3 pt-2">

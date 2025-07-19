@@ -155,11 +155,11 @@ export default function TeachersManagement() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 bg-white p-6 rounded-2xl shadow-lg border-2 border-blue-100">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight">Gestión de Profesores</h2>
-          <p className="text-muted-foreground">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-700 flex items-center gap-2">Gestión de Profesores <span className='inline-flex items-center justify-center w-7 h-7 rounded bg-green-600 text-white'><GraduationCap className='h-4 w-4'/></span></h2>
+          <p className="text-gray-500">
             Administra el personal docente y sus asignaciones
           </p>
         </div>
