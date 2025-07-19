@@ -33,7 +33,7 @@ Ejemplo para `DATABASE_URL`:
 DATABASE_URL="postgresql://usuario:contraseña@localhost:5432/nombre_de_basededatos"
 ```
 
-> Recuerda que `usuario`, `contraseña` y `nombre_de_base` deben coincidir con lo que definiste en el `docker-compose.yml`.
+> Recuerda que `usuario`, `contraseña` y `nombre_de_base` deben coincidir con lo que definiste en el  xd `docker-compose.yml`.
 
 ### ¿Cómo generar un NEXTAUTH_SECRET?
 
