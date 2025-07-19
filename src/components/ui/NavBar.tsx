@@ -10,8 +10,14 @@ import { useSession, signOut } from "next-auth/react"
 export default function Navbar() {
   const [, setIsMobile] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
   const router = useRouter()
   const { data: session, status } = useSession()
+
+  // Evitar problemas de hidratación
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const handleLogin = () => {
     router.push("/Login")
@@ -72,7 +78,7 @@ export default function Navbar() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#e30f28] transition-all duration-300 group-hover:w-full"></span>
               </Link>
               <Link
-                href="/views/Courses"
+                href="/Courses"
                 className="text-[#00246a] hover:text-[#e30f28] transition-all duration-300 font-medium relative group py-2 flex items-center space-x-2"
               >
                 <BookMarked className="h-5 w-5" />
@@ -90,8 +96,8 @@ export default function Navbar() {
             </nav>
 
             <div className="hidden md:flex items-center space-x-3">
-              {status === "loading" ? (
-                // Loading state
+              {!isMounted || status === "loading" ? (
+                // Loading state - mostrar hasta que esté montado y la sesión cargue
                 <div className="flex items-center space-x-3">
                   <div className="w-20 h-10 bg-gray-200 rounded-full animate-pulse"></div>
                   <div className="w-24 h-10 bg-gray-200 rounded-full animate-pulse"></div>
@@ -144,8 +150,8 @@ export default function Navbar() {
           {isMobileMenuOpen && (
             <div className="md:hidden mt-4 pb-4 border-t border-gray-200">
               <div className="flex flex-col space-y-3 pt-4">
-                {status === "loading" ? (
-                  // Loading state
+                {!isMounted || status === "loading" ? (
+                  // Loading state - mostrar hasta que esté montado y la sesión cargue
                   <div className="flex flex-col space-y-3">
                     <div className="w-full h-12 bg-gray-200 rounded-full animate-pulse"></div>
                     <div className="w-full h-12 bg-gray-200 rounded-full animate-pulse"></div>
@@ -208,11 +214,11 @@ export default function Navbar() {
       {/* Mobile Bottom Navigation Tabs */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.1)] z-50">
         <div className="flex justify-around items-center">
-          <Link href="#inicio" className="flex flex-col items-center py-3 px-2 text-[#00246a] hover:text-[#e30f28]">
+          <Link href="/" className="flex flex-col items-center py-3 px-2 text-[#00246a] hover:text-[#e30f28]">
             <House className="h-6 w-6" />
             <span className="text-xs mt-1">Inicio</span>
           </Link>
-          <Link href="#cursos" className="flex flex-col items-center py-3 px-2 text-[#00246a] hover:text-[#e30f28]">
+          <Link href="/Courses" className="flex flex-col items-center py-3 px-2 text-[#00246a] hover:text-[#e30f28]">
             <BookMarked className="h-6 w-6" />
             <span className="text-xs mt-1">Cursos</span>
           </Link>
