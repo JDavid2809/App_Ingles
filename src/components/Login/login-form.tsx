@@ -48,18 +48,18 @@ export default function LoginForm() {
   return (
     <div className="relative">
       {/* Enhanced floating decorative elements */}
-      <div className="absolute -top-8 -left-8 w-16 h-16 bg-gradient-to-br from-blue-400 via-purple-500 to-indigo-600 rounded-full opacity-20 animate-pulse shadow-2xl"></div>
-      <div className="absolute -top-4 -right-10 w-10 h-10 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-full opacity-30 animate-bounce shadow-xl"></div>
-      <div className="absolute -bottom-6 -left-6 w-8 h-8 bg-gradient-to-br from-indigo-400 via-purple-500 to-pink-500 rounded-full opacity-25 animate-ping shadow-lg"></div>
-      <div className="absolute -bottom-4 -right-8 w-6 h-6 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full opacity-30 animate-pulse"></div>
+      <div className="absolute -top-8 -left-8 w-16 h-16 bg-gradient-to-br from-[#e30f28]/40 via-[#e30f28]/50 to-[#00246a]/60 rounded-full opacity-20 animate-pulse shadow-2xl"></div>
+      <div className="absolute -top-4 -right-10 w-10 h-10 bg-gradient-to-br from-[#00246a]/40 via-[#e30f28]/50 to-[#00246a]/60 rounded-full opacity-30 animate-bounce shadow-xl"></div>
+      <div className="absolute -bottom-6 -left-6 w-8 h-8 bg-gradient-to-br from-[#e30f28]/40 via-[#00246a]/50 to-[#e30f28]/50 rounded-full opacity-25 animate-ping shadow-lg"></div>
+      <div className="absolute -bottom-4 -right-8 w-6 h-6 bg-gradient-to-br from-[#00246a]/40 to-[#e30f28]/50 rounded-full opacity-30 animate-pulse"></div>
 
-      <div className="relative border-0 shadow-2xl bg-gradient-to-br from-white/95 via-white/90 to-indigo-50/80 backdrop-blur-2xl rounded-3xl overflow-hidden transform hover:scale-[1.02] transition-all duration-700 hover:shadow-indigo-200/50">
+      <div className="relative border-0 shadow-2xl bg-gradient-to-br from-white/95 via-white/90 to-[#e30f28]/5 backdrop-blur-2xl rounded-3xl overflow-hidden transform hover:scale-[1.02] transition-all duration-700 hover:shadow-[#e30f28]/20">
         {/* Enhanced animated border effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500 rounded-3xl opacity-30 animate-pulse"></div>
-        <div className="absolute inset-[3px] bg-gradient-to-br from-white/95 via-white/90 to-indigo-50/80 rounded-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#e30f28] via-[#00246a] to-[#e30f28] rounded-3xl opacity-30 animate-pulse"></div>
+        <div className="absolute inset-[3px] bg-gradient-to-br from-white/95 via-white/90 to-[#e30f28]/5 rounded-3xl"></div>
 
         {/* Enhanced Header */}
-        <div className="relative bg-gradient-to-br from-indigo-600 via-blue-600 to-indigo-700 text-white p-10 overflow-hidden">
+        <div className="relative bg-gradient-to-br from-[#e30f28] via-[#e30f28] to-[#00246a] text-white p-10 overflow-hidden">
           {/* Complex animated background pattern */}
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
@@ -86,7 +86,7 @@ export default function LoginForm() {
                 ¡Bienvenido de vuelta!
               </h2>
             </div>
-            <p className="text-indigo-100 text-center text-lg font-semibold">
+            <p className="text-white/90 text-center text-lg font-semibold">
               Continúa tu viaje hacia el dominio del inglés
             </p>
             <div className="flex justify-center space-x-3 pt-2">
@@ -133,27 +133,27 @@ export default function LoginForm() {
             )}
             <label
               htmlFor="email"
-              className="text-slate-800 font-black text-base md:text-lg mb-3 group-hover:text-indigo-700 transition-all duration-300 flex items-center gap-3"
+              className="text-slate-800 font-black text-base md:text-lg mb-3 group-hover:text-[#e30f28] transition-all duration-300 flex items-center gap-3"
             >
-              <div className="p-1 bg-indigo-100 rounded-lg group-hover:bg-indigo-200 transition-all duration-300">
-                <Mail className="w-5 h-5 text-indigo-600 group-hover:scale-110 transition-transform duration-300" />
+              <div className="p-1 bg-[#e30f28]/10 rounded-lg group-hover:bg-[#e30f28]/20 transition-all duration-300">
+                <Mail className="w-5 h-5 text-[#e30f28] group-hover:scale-110 transition-transform duration-300" />
               </div>
               Correo Electrónico
             </label>
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-400/30 to-purple-400/30 rounded-2xl blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#e30f28]/20 to-[#00246a]/20 rounded-2xl blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
               <div className="relative">
-                <Mail className="absolute left-3 md:left-4 top-3 md:top-4 h-5 w-5 md:h-6 md:w-6 text-slate-400 group-hover:text-indigo-600 group-hover:scale-110 transition-all duration-300 z-10" />
+                <Mail className="absolute left-3 md:left-4 top-3 md:top-4 h-5 w-5 md:h-6 md:w-6 text-slate-400 group-hover:text-[#e30f28] group-hover:scale-110 transition-all duration-300 z-10" />
                 <input
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   id="email"
                   type="email"
                   placeholder="tu@email.com"
-                  className="w-full pl-10 md:pl-12 pr-4 md:pr-6 h-12 md:h-14 border-3 border-gray-200 text-black focus:border-indigo-600 focus:ring-6 focus:ring-indigo-100 focus:outline-none text-sm md:text-base rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/95 backdrop-blur-sm font-semibold placeholder:text-gray-400 group-hover:bg-white group-hover:border-indigo-300"
+                  className="w-full pl-10 md:pl-12 pr-4 md:pr-6 h-12 md:h-14 border-3 border-gray-200 text-black focus:border-[#e30f28] focus:ring-6 focus:ring-[#e30f28]/20 focus:outline-none text-sm md:text-base rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/95 backdrop-blur-sm font-semibold placeholder:text-gray-400 group-hover:bg-white group-hover:border-[#e30f28]/50"
                   required
                 />
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none"></div>
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#e30f28]/10 to-[#00246a]/10 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none"></div>
               </div>
             </div>
           </div>
@@ -162,10 +162,10 @@ export default function LoginForm() {
           <div className="space-y-5 group">
             <label
               htmlFor="password"
-              className="text-slate-800 font-black text-base md:text-lg mb-3 group-hover:text-indigo-700 transition-all duration-300 flex items-center gap-3"
+              className="text-slate-800 font-black text-base md:text-lg mb-3 group-hover:text-[#e30f28] transition-all duration-300 flex items-center gap-3"
             >
-              <div className="p-1 bg-indigo-100 rounded-lg group-hover:bg-indigo-200 transition-all duration-300">
-                <Lock className="w-5 h-5 text-indigo-600 group-hover:scale-110 transition-transform duration-300" />
+              <div className="p-1 bg-[#e30f28]/10 rounded-lg group-hover:bg-[#e30f28]/20 transition-all duration-300">
+                <Lock className="w-5 h-5 text-[#e30f28] group-hover:scale-110 transition-transform duration-300" />
               </div>
               Contraseña
             </label>
@@ -179,13 +179,13 @@ export default function LoginForm() {
                   onChange={(e) => setPassword(e.target.value)}
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
-                  className="w-full pl-10 md:pl-12 pr-12 md:pr-14 h-12 md:h-14 border-3 border-gray-200 text-black focus:border-indigo-600 focus:ring-6 focus:ring-indigo-100 focus:outline-none text-sm md:text-base rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/95 backdrop-blur-sm font-semibold placeholder:text-gray-400 group-hover:bg-white group-hover:border-indigo-300"
+                  className="w-full pl-10 md:pl-12 pr-12 md:pr-14 h-12 md:h-14 border-3 border-gray-200 text-black focus:border-[#e30f28] focus:ring-6 focus:ring-[#e30f28]/20 focus:outline-none text-sm md:text-base rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/95 backdrop-blur-sm font-semibold placeholder:text-gray-400 group-hover:bg-white group-hover:border-[#e30f28]/50"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-4 text-slate-400 hover:text-indigo-600 transition-all duration-300 hover:scale-125 z-10 p-1 rounded-xl hover:bg-indigo-50"
+                  className="absolute right-4 top-4 text-slate-400 hover:text-[#e30f28] transition-all duration-300 hover:scale-125 z-10 p-1 rounded-xl hover:bg-[#e30f28]/10"
                 >
                   {showPassword ? (
                     <EyeOff className="h-5 w-5" />
@@ -226,11 +226,11 @@ export default function LoginForm() {
             type="submit"
             disabled={loading}
            
-            className= {` w-full relative h-12 md:h-16 text-base md:text-xl font-black rounded-2xl shadow-2xl transform hover:scale-[1.03] hover:-translate-y-2 transition-all duration-500 flex items-center justify-center overflow-hidden group bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 hover:from-indigo-700 hover:via-purple-700 hover:to-blue-700 text-white 
+            className= {` w-full relative h-12 md:h-16 text-base md:text-xl font-black rounded-2xl shadow-2xl transform hover:scale-[1.03] hover:-translate-y-2 transition-all duration-500 flex items-center justify-center overflow-hidden group bg-gradient-to-r from-[#e30f28] via-[#e30f28] to-[#00246a] hover:from-[#e30f28] hover:via-[#e30f28]/90 hover:to-[#00246a] text-white 
               ${loading && "opacity-60 cursor-not-allowed "} `}
           >
             {/* Multiple animated backgrounds */}
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-400 via-purple-500 to-blue-500 opacity-0 group-hover:opacity-40 transition-all duration-700"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#e30f28]/60 via-[#00246a]/50 to-[#e30f28]/60 opacity-0 group-hover:opacity-40 transition-all duration-700"></div>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
             <div className="absolute inset-0 bg-gradient-to-45 from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 animate-pulse"></div>
 
@@ -245,8 +245,8 @@ export default function LoginForm() {
             </div>
 
             {/* Enhanced glow effects */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-400 to-purple-500 blur-2xl opacity-0 group-hover:opacity-40 transition-all duration-700 -z-10"></div>
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 blur-xl opacity-0 group-hover:opacity-30 transition-all duration-700 -z-20"></div>
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#e30f28]/60 to-[#00246a]/60 blur-2xl opacity-0 group-hover:opacity-40 transition-all duration-700 -z-10"></div>
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#e30f28] to-[#00246a] blur-xl opacity-0 group-hover:opacity-30 transition-all duration-700 -z-20"></div>
           </button>
 
           {/* Enhanced Divider */}

@@ -9,42 +9,42 @@ export default function AuthPage() {
   const [activeTab, setActiveTab] = useState("login")
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-[#e30f28]/5 via-white to-[#00246a]/5 relative overflow-hidden">
       {/* Enhanced Background Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Main gradient orbs */}
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-violet-300 via-purple-400 to-indigo-500 rounded-full opacity-20 blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-cyan-300 via-blue-400 to-indigo-500 rounded-full opacity-20 blur-3xl animate-pulse"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-pink-200 via-purple-300 to-indigo-300 rounded-full opacity-15 blur-3xl animate-pulse"></div>
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-[#e30f28]/20 via-[#e30f28]/30 to-[#00246a]/30 rounded-full opacity-30 blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-[#00246a]/20 via-[#e30f28]/30 to-[#00246a]/30 rounded-full opacity-30 blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-[#e30f28]/10 via-[#00246a]/20 to-[#e30f28]/10 rounded-full opacity-20 blur-3xl animate-pulse"></div>
 
         {/* Animated geometric shapes */}
         <div
-          className="absolute top-20 left-20 w-32 h-32 border-2 border-purple-300/30 rounded-full animate-spin"
+          className="absolute top-20 left-20 w-32 h-32 border-2 border-[#e30f28]/30 rounded-full animate-spin"
           style={{ animationDuration: "20s" }}
         ></div>
-        <div className="absolute bottom-20 right-20 w-24 h-24 border-2 border-cyan-300/30 rounded-lg rotate-45 animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-24 h-24 border-2 border-[#00246a]/30 rounded-lg rotate-45 animate-pulse"></div>
 
         {/* Floating particles with improved animation */}
-        <div className="absolute top-1/4 left-1/4 w-4 h-4 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-70 animate-bounce shadow-lg"></div>
+        <div className="absolute top-1/4 left-1/4 w-4 h-4 bg-gradient-to-r from-[#e30f28] to-[#00246a] rounded-full opacity-70 animate-bounce shadow-lg"></div>
         <div
-          className="absolute top-3/4 right-1/4 w-3 h-3 bg-gradient-to-r from-pink-400 to-red-500 rounded-full opacity-70 animate-bounce shadow-lg"
+          className="absolute top-3/4 right-1/4 w-3 h-3 bg-gradient-to-r from-[#00246a] to-[#e30f28] rounded-full opacity-70 animate-bounce shadow-lg"
           style={{ animationDelay: "1s" }}
         ></div>
         <div
-          className="absolute top-1/2 left-3/4 w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-70 animate-bounce shadow-lg"
+          className="absolute top-1/2 left-3/4 w-2 h-2 bg-gradient-to-r from-[#e30f28] to-[#00246a] rounded-full opacity-70 animate-bounce shadow-lg"
           style={{ animationDelay: "2s" }}
         ></div>
 
         {/* Additional floating elements */}
-        <div className="absolute top-1/3 right-1/3 w-6 h-6 bg-gradient-to-r from-yellow-300 to-orange-400 rounded-full opacity-60 animate-ping"></div>
-        <div className="absolute bottom-1/3 left-1/3 w-5 h-5 bg-gradient-to-r from-green-300 to-emerald-400 rounded-full opacity-60 animate-pulse"></div>
+        <div className="absolute top-1/3 right-1/3 w-6 h-6 bg-gradient-to-r from-[#e30f28]/80 to-[#00246a]/80 rounded-full opacity-60 animate-ping"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-5 h-5 bg-gradient-to-r from-[#00246a]/80 to-[#e30f28]/80 rounded-full opacity-60 animate-pulse"></div>
       </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-3 md:p-4 lg:p-6">
         {/* Enhanced Logo Section */}
         <div className="mb-6 md:mb-8 lg:mb-10 transform hover:scale-105 transition-all duration-300">
           <div className="relative p-4 bg-white/20 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/30">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-cyan-400/20 rounded-3xl animate-pulse"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#e30f28]/20 to-[#00246a]/20 rounded-3xl animate-pulse"></div>
             <Image
               src="/imageIngles.png"
               alt="Triunfando con el Inglés"
@@ -63,14 +63,14 @@ export default function AuthPage() {
               onClick={() => setActiveTab("login")}
               className={`py-3 px-4 md:py-4 md:px-6 font-bold rounded-2xl transition-all duration-500 relative overflow-hidden group ${
                 activeTab === "login"
-                  ? "bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 text-white shadow-2xl transform scale-[1.02] shadow-purple-500/25"
+                  ? "bg-gradient-to-r from-[#e30f28] via-[#e30f28] to-[#00246a] text-white shadow-2xl transform scale-[1.02] shadow-[#e30f28]/25"
                   : "text-gray-600 hover:text-gray-800 hover:bg-white/20"
               }`}
             >
               {activeTab === "login" && (
                 <>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-blue-400/20 animate-pulse"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#e30f28]/20 to-[#00246a]/20 animate-pulse"></div>
                 </>
               )}
               <span className="relative z-10 text-xs md:text-sm font-extrabold tracking-wide">Iniciar Sesión</span>
@@ -79,14 +79,14 @@ export default function AuthPage() {
               onClick={() => setActiveTab("register")}
               className={`py-3 px-4 md:py-4 md:px-6 font-bold rounded-2xl transition-all duration-500 relative overflow-hidden group ${
                 activeTab === "register"
-                  ? "bg-gradient-to-r from-rose-600 via-pink-600 to-red-600 text-white shadow-2xl transform scale-[1.02] shadow-pink-500/25"
+                  ? "bg-gradient-to-r from-[#00246a] via-[#00246a] to-[#e30f28] text-white shadow-2xl transform scale-[1.02] shadow-[#00246a]/25"
                   : "text-gray-600 hover:text-gray-800 hover:bg-white/20"
               }`}
             >
               {activeTab === "register" && (
                 <>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-pink-400/20 to-red-400/20 animate-pulse"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#00246a]/20 to-[#e30f28]/20 animate-pulse"></div>
                 </>
               )}
               <span className="relative z-10 text-xs md:text-sm font-extrabold tracking-wide">Registrarse</span>

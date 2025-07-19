@@ -3,29 +3,13 @@
 import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import {
-  Users,
-  Plus,
-  Edit,
-  Trash2,
-  MoreHorizontal,
-  Search,
-  Eye,
-  UserCheck,
-  UserX,
-  BookOpen,
-  Calendar,
-  CreditCard
-} from "lucide-react"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Search, Plus } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
+import StudentForm from "./StudentForm"
+import StudentsTable from "./StudentsTable"
+import StudentDetailDialog from "./StudentDetailDialog"
 
 interface Student {
   id_estudiante: number
@@ -282,11 +266,11 @@ export default function StudentsManagement() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 bg-white p-6 rounded-2xl shadow-lg border-2 border-blue-100">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight">Gestión de Estudiantes</h2>
-          <p className="text-muted-foreground">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-700 flex items-center gap-2">Gestión de Estudiantes <span className='inline-flex items-center justify-center w-7 h-7 rounded bg-blue-600 text-white'><svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6 5.87V17m0 0a4 4 0 00-3-3.87M12 17a4 4 0 013-3.87M12 17v3m0-3a4 4 0 00-3-3.87M12 17a4 4 0 013-3.87M12 17v3m0-3a4 4 0 00-3-3.87M12 17a4 4 0 013-3.87' /></svg></span></h2>
+          <p className="text-gray-500">
             Administra la lista de estudiantes, inscripciones y seguimiento académico
           </p>
         </div>
@@ -302,67 +286,13 @@ export default function StudentsManagement() {
               <DialogTitle>
                 {isEditing ? 'Editar Estudiante' : 'Nuevo Estudiante'}
               </DialogTitle>
-              <DialogDescription>
-                {isEditing ? 'Modifica la información del estudiante' : 'Agrega un nuevo estudiante al sistema'}
-              </DialogDescription>
             </DialogHeader>
-            <div className="grid gap-4 py-4">
-              <div className="grid gap-2">
-                <Label htmlFor="nombre">Nombre completo</Label>
-                <Input
-                  id="nombre"
-                  value={studentForm.nombre}
-                  onChange={(e) => setStudentForm({ ...studentForm, nombre: e.target.value })}
-                  placeholder="Juan Pérez"
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={studentForm.email}
-                  onChange={(e) => setStudentForm({ ...studentForm, email: e.target.value })}
-                  placeholder="juan@ejemplo.com"
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="telefono">Teléfono</Label>
-                <Input
-                  id="telefono"
-                  value={studentForm.telefono}
-                  onChange={(e) => setStudentForm({ ...studentForm, telefono: e.target.value })}
-                  placeholder="123-456-7890"
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="edad">Edad</Label>
-                <Input
-                  id="edad"
-                  type="number"
-                  value={studentForm.edad}
-                  onChange={(e) => setStudentForm({ ...studentForm, edad: e.target.value })}
-                  placeholder="25"
-                />
-              </div>
-              {!isEditing && (
-                <div className="grid gap-2">
-                  <Label htmlFor="password">Contraseña inicial</Label>
-                  <Input
-                    id="password"
-                    type="password"
-                    value={studentForm.password}
-                    onChange={(e) => setStudentForm({ ...studentForm, password: e.target.value })}
-                    placeholder="Contraseña temporal"
-                  />
-                </div>
-              )}
-            </div>
-            <DialogFooter>
-              <Button onClick={isEditing ? handleUpdateStudent : handleCreateStudent}>
-                {isEditing ? 'Actualizar' : 'Crear'} Estudiante
-              </Button>
-            </DialogFooter>
+            <StudentForm
+              studentForm={studentForm}
+              setStudentForm={setStudentForm}
+              isEditing={isEditing}
+              onSubmit={isEditing ? handleUpdateStudent : handleCreateStudent}
+            />
           </DialogContent>
         </Dialog>
       </div>
@@ -390,64 +320,12 @@ export default function StudentsManagement() {
           </div>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Nombre</TableHead>
-                <TableHead>Email</TableHead>
-                <TableHead>Edad</TableHead>
-                <TableHead>Cursos</TableHead>
-                <TableHead>Estado</TableHead>
-                <TableHead>Acciones</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {students.map((student) => (
-                <TableRow key={student.id_estudiante}>
-                  <TableCell className="font-medium">{student.nombre}</TableCell>
-                  <TableCell>{student.email}</TableCell>
-                  <TableCell>{student.edad} años</TableCell>
-                  <TableCell>
-                    <Badge variant="secondary">
-                      {student.horario.length} curso(s)
-                    </Badge>
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant={student.b_activo ? "default" : "secondary"}>
-                      {student.b_activo ? "Activo" : "Inactivo"}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0">
-                          <MoreHorizontal className="h-4 w-4" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem onClick={() => openDetailDialog(student)}>
-                          <Eye className="mr-2 h-4 w-4" />
-                          Ver Detalle
-                        </DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => openEditDialog(student)}>
-                          <Edit className="mr-2 h-4 w-4" />
-                          Editar
-                        </DropdownMenuItem>
-                        <DropdownMenuItem 
-                          onClick={() => handleDeactivateStudent(student.id_estudiante)}
-                          className="text-red-600"
-                        >
-                          <UserX className="mr-2 h-4 w-4" />
-                          Desactivar
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-
+          <StudentsTable
+            students={students}
+            openDetailDialog={openDetailDialog}
+            openEditDialog={openEditDialog}
+            handleDeactivateStudent={handleDeactivateStudent}
+          />
           {/* Paginación */}
           <div className="flex items-center justify-between space-x-2 py-4">
             <Button
@@ -474,122 +352,13 @@ export default function StudentsManagement() {
       </Card>
 
       {/* Dialog de Detalle del Estudiante */}
-      <Dialog open={isDetailDialogOpen} onOpenChange={setIsDetailDialogOpen}>
-        <DialogContent className="sm:max-w-[600px]">
-          <DialogHeader>
-            <DialogTitle>Detalle del Estudiante</DialogTitle>
-            <DialogDescription>
-              Información completa y historial académico
-            </DialogDescription>
-          </DialogHeader>
-          {selectedStudent && (
-            <Tabs defaultValue="info" className="w-full">
-              <TabsList className="grid w-full grid-cols-4">
-                <TabsTrigger value="info">Información</TabsTrigger>
-                <TabsTrigger value="courses">Cursos</TabsTrigger>
-                <TabsTrigger value="payments">Pagos</TabsTrigger>
-                <TabsTrigger value="history">Historial</TabsTrigger>
-              </TabsList>
-              
-              <TabsContent value="info" className="space-y-4">
-                <div className="grid gap-4">
-                  <div>
-                    <Label>Nombre</Label>
-                    <p className="text-sm">{selectedStudent.nombre}</p>
-                  </div>
-                  <div>
-                    <Label>Email</Label>
-                    <p className="text-sm">{selectedStudent.email}</p>
-                  </div>
-                  <div>
-                    <Label>Teléfono</Label>
-                    <p className="text-sm">{selectedStudent.telefono || 'No especificado'}</p>
-                  </div>
-                  <div>
-                    <Label>Edad</Label>
-                    <p className="text-sm">{selectedStudent.edad} años</p>
-                  </div>
-                  <div>
-                    <Label>Estado</Label>
-                    <Badge variant={selectedStudent.b_activo ? "default" : "secondary"}>
-                      {selectedStudent.b_activo ? "Activo" : "Inactivo"}
-                    </Badge>
-                  </div>
-                </div>
-              </TabsContent>
-
-              <TabsContent value="courses" className="space-y-4">
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <Label>Cursos Inscritos</Label>
-                    <Select onValueChange={(courseId) => handleEnrollStudent(selectedStudent.id_estudiante, parseInt(courseId))}>
-                      <SelectTrigger className="w-[200px]">
-                        <SelectValue placeholder="Inscribir en curso" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {courses.map((course) => (
-                          <SelectItem key={course.id_curso} value={course.id_curso.toString()}>
-                            {course.nombre}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    {selectedStudent.horario.map((enrollment: any) => (
-                      <div key={enrollment.id_horario} className="flex items-center justify-between p-2 border rounded">
-                        <div>
-                          <p className="font-medium">{enrollment.curso?.nombre}</p>
-                          <p className="text-sm text-muted-foreground">{enrollment.curso?.modalidad}</p>
-                        </div>
-                        <Badge variant="outline">{enrollment.curso?.modalidad}</Badge>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </TabsContent>
-
-              <TabsContent value="payments" className="space-y-4">
-                <div className="space-y-2">
-                  <Label>Historial de Pagos</Label>
-                  <div className="space-y-2">
-                    {selectedStudent.pago.slice(0, 5).map((payment: any) => (
-                      <div key={payment.id_pago} className="flex items-center justify-between p-2 border rounded">
-                        <div>
-                          <p className="font-medium">${payment.monto}</p>
-                          <p className="text-sm text-muted-foreground">
-                            {new Date(payment.fecha_pago).toLocaleDateString()}
-                          </p>
-                        </div>
-                        <Badge variant="outline">{payment.tipo}</Badge>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </TabsContent>
-
-              <TabsContent value="history" className="space-y-4">
-                <div className="space-y-2">
-                  <Label>Historial Académico</Label>
-                  <div className="space-y-2">
-                    {selectedStudent.historial_academico.slice(0, 5).map((record: any) => (
-                      <div key={record.id_historial} className="flex items-center justify-between p-2 border rounded">
-                        <div>
-                          <p className="font-medium">Calificación: {record.calificacion || 'N/A'}</p>
-                          <p className="text-sm text-muted-foreground">
-                            {record.fecha ? new Date(record.fecha).toLocaleDateString() : 'N/A'}
-                          </p>
-                        </div>
-                        <Badge variant="outline">{record.tipo || 'General'}</Badge>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </TabsContent>
-            </Tabs>
-          )}
-        </DialogContent>
-      </Dialog>
+      <StudentDetailDialog
+        open={isDetailDialogOpen}
+        onOpenChange={setIsDetailDialogOpen}
+        student={selectedStudent}
+        courses={courses}
+        handleEnrollStudent={handleEnrollStudent}
+      />
     </div>
   )
 }

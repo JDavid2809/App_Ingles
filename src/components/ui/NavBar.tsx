@@ -25,7 +25,7 @@ export default function Navbar() {
     if (session?.user) {
       const userRole = (session.user as any)?.rol
       if (userRole === 'ADMIN') {
-        router.push("/Admin")
+        router.push("/admin")
       } else if (userRole === 'ESTUDIANTE') {
         router.push("/Student")
       } else {
@@ -106,13 +106,6 @@ export default function Navbar() {
                     <User className="h-4 w-4" />
                     <span>Mi Panel</span>
                   </button>
-                  <button 
-                    onClick={handleSignOut}
-                    className="bg-white text-[#e30f28] border border-[#e30f28] hover:bg-red-50 px-4 py-2 rounded-full font-bold transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow flex items-center space-x-2"
-                  >
-                    <LogOut className="h-4 w-4" />
-                    <span>Cerrar Sesión</span>
-                  </button>
                 </div>
               ) : (
                 // User not logged in
@@ -163,16 +156,7 @@ export default function Navbar() {
                       <User className="h-4 w-4" />
                       <span>Mi Panel</span>
                     </button>
-                    <button 
-                      onClick={() => {
-                        handleSignOut()
-                        setIsMobileMenuOpen(false)
-                      }}
-                      className="bg-white text-[#e30f28] border border-[#e30f28] hover:bg-red-50 px-4 py-3 rounded-full font-bold transition-all duration-300 flex items-center justify-center space-x-2"
-                    >
-                      <LogOut className="h-4 w-4" />
-                      <span>Cerrar Sesión</span>
-                    </button>
+                    {/* Botón de cerrar sesión eliminado para evitar duplicidad con el sidebar */}
                   </>
                 ) : (
                   // User not logged in

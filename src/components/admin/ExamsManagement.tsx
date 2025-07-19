@@ -303,11 +303,11 @@ export default function ExamsManagement() {
   )
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 bg-white p-6 rounded-2xl shadow-lg border-2 border-orange-100">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight">Gestión de Exámenes</h2>
-          <p className="text-muted-foreground">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-700 flex items-center gap-2">Gestión de Exámenes <span className='inline-flex items-center justify-center w-7 h-7 rounded bg-orange-600 text-white'><svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 17v-2a2 2 0 012-2h2a2 2 0 012 2v2m-6 4h6a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg></span></h2>
+          <p className="text-gray-500">
             Crea, edita y administra exámenes de nivelación y evaluación
           </p>
         </div>
